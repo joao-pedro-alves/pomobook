@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { TimeInSeconds } from './../../_pipes/time-in-seconds.pipe'
 
 @Component({
@@ -7,14 +7,50 @@ import { TimeInSeconds } from './../../_pipes/time-in-seconds.pipe'
 	styleUrls: ['./pomodoro.component.css']
 })
 export class PomodoroComponent implements OnInit {
-	timer: number;
+	remainTime: number = 0;
+	timer;
+
+	timerSettings = {
+		focus: 30,
+		shortbreak: 15,
+		longbreak: 20
+	}
 
 	constructor() { }
 
 	ngOnInit() {
-		this.timer = 12
 
-		setInterval(() => this.timer--, 1000)	
 	}
 
+	startFocus() {
+		this.setTime('focus')
+	}
+
+	startShortBreak() {
+		this.setTime('shortbreak')
+	}
+
+	startLongBreak() {
+		this.setTime('longbreak')
+	}
+
+	timerStop() {
+		this.stop()
+		this.remainTime = 0;
+	}
+
+	private setTime(type: string) {
+		this.remainTime = this.timerSettings[type] * 60
+		this.resetTimer()
+	}
+
+	private stop() {
+		if (this.timer)
+			clearInterval(this.timer)
+	}
+
+	private resetTimer() {
+		this.stop()
+		this.timer = setInterval(() => this.remainTime--, 1000)
+	}
 }

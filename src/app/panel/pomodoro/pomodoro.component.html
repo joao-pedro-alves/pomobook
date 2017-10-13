@@ -1,19 +1,31 @@
 <div class="container">
 	<div class="text-center">
-		<h1 class="pt-5 pb-5 chronometer">{{ timer | timeInSeconds }}</h1>
+		<h1 class="pt-5 pb-5 chronometer">{{ remainTime | timeInSeconds }}</h1>
 		<hr />
 		<div class="row justify-content-center">
-			<div class="col-auto">
-				<button (click)="startFocus()" class="btn btn-success btn-lg"><i class="fa fa-play"></i> focar</button>
+			<div class="col">
+				<button (click)="startFocus()" class="btn btn-success btn-lg form-control"><i class="fa fa-play"></i> focar</button>
+				<div class="input-group mt-3">
+					<input [(ngModel)]="timerSettings.focus" type="number" class="form-control">
+					<span class="input-group-addon bg-transparent text-secondary">minutos</span>
+				</div>
 			</div>
-			<div class="col-auto">
-				<button (click)="startShortBreak()" class="btn btn-primary btn-lg">pausa rápida</button>
+			<div class="col">
+				<button (click)="startShortBreak()" class="btn btn-primary btn-lg form-control">pausa rápida</button>
+				<div class="input-group mt-3">
+					<input [(ngModel)]="timerSettings.shortbreak" type="number" class="form-control">
+					<span class="input-group-addon bg-transparent text-secondary">minutos</span>
+				</div>
 			</div>
-			<div class="col-auto">
-				<button (click)="startLongBreak()" class="btn btn-primary btn-lg">pausa longa <small><b>(15)</b></small></button>
+			<div class="col">
+				<button (click)="startLongBreak()" class="btn btn-primary btn-lg form-control">pausa longa <small></small></button>
+				<div class="input-group mt-3">
+					<input [(ngModel)]="timerSettings.longbreak" type="number" class="form-control">
+					<span class="input-group-addon bg-transparent text-secondary">minutos</span>
+				</div>
 			</div>
-			<div class="col-auto">
-				<button (click)="stop()" class="btn btn-danger btn-lg"><i class="fa fa-stop"></i> parar</button>
+			<div class="col">
+				<button (click)="timerStop()" class="btn btn-danger btn-lg form-control"><i class="fa fa-stop"></i> parar</button>
 			</div>
 		</div>
 	</div>
