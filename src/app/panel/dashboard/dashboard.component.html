@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col-8">
+		<pomodoro-chronometer></pomodoro-chronometer>
+	</div>
+	<div class="col-4">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Objetivos</h4>
+				<div class="nav flex-column nav-pills mb-4" id="v-pills-tab" role="tablist">
+				  <span *ngFor="let a of [1,2,3]; let i = index" class="nav-link pl-0 pr-0"> <a href="#" [ngClass]="{'text-secondary': i != 0}">Objetivo 1</a>
+				  	<div class="pull-right">
+				  		<span class="badge badge-pill badge-primary">10h 30m</span>
+				  		<a href="#" class="badge badge-pill badge-secondary"><i class="fa fa-pencil"></i></a>
+				  	</div>
+				  </span>
+				</div>
+				<h5 class="card-title">Criar objetivo</h5>
+				<form class="mb-4">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="text" class="form-control" />
+							<span class="input-group-btn">
+								<button class="btn btn-success" type="button">Go!</button>
+							</span>
+						</div>
+					</div>
+				</form>
+				<h5 class="card-title">Configurações</h5>
+				<div class="row">
+					<div class="col-4">
+						<label class="text-secondary">Foco</label>
+						<input type="number" class="form-control" />
+					</div>
+					<div class="col-4">
+						<label class="text-secondary">P. curta</label>
+						<input type="number" class="form-control" />
+					</div>
+					<div class="col-4">
+						<label class="text-secondary">P. longa</label>
+						<input type="number" class="form-control" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

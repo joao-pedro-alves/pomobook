@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-7 ml-auto mr-auto">
+			<div class="card mt-5">
+				<div class="card-body">
+					<h4 class="card-title mb-4">Criar conta</h4>
+					<div class="alert alert-warning alert-dismissible fade show" role="alert" *ngIf="errorMsg">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeErrorMsg()">
+					    <span aria-hidden="true">&times;</span>
+					  </button>
+					  <span>{{ errorMsg }}</span>
+					</div>
+					<form novalidate [formGroup]="myForm" (submit)="submitRegistration()">
+						<div class="form-group row align-items-center justify-content-center">
+							<label class="col-4 m-0">Nome completo</label>
+							<div class="col-8">
+								<input [ngClass]="{'is-invalid': myForm.get('name').invalid && myForm.get('name').touched, 'is-valid': myForm.get('name').valid}" placeholder="Como vamos te chamar?" type="text" formControlName="name" class="form-control">
+							</div>
+						</div>
+
+						<div class="form-group row align-items-center justify-content-center">
+							<label class="col-4 m-0">Email</label>
+							<div class="col-8">
+								<input [ngClass]="{'is-invalid': myForm.get('email').invalid && myForm.get('email').touched, 'is-valid': myForm.get('email').valid}" placeholder="Qual seu email?" type="email" formControlName="email" class="form-control">
+							</div>
+						</div>
+						<div class="form-group row align-items-center justify-content-center">
+							<label class="col-4 m-0">Senha</label>
+							<div class="col-8">
+								<input [ngClass]="{'is-invalid': myForm.get('password').invalid && myForm.get('password').touched, 'is-valid': myForm.get('password').valid}" placeholder="Sua senha de acesso" type="password" formControlName="password" class="form-control">
+							</div>
+						</div>
+						<div class="form-group row align-items-center justify-content-center">
+							<label class="col-4 m-0">Confirmar senha</label>
+							<div class="col-8">
+								<input [ngClass]="{'is-invalid': myForm.get('password_confirm').invalid && myForm.get('password_confirm').touched, 'is-valid': myForm.get('password_confirm').valid}" placeholder="Senha digitada anteriormente" type="password" formControlName="password_confirm" class="form-control">
+							</div>
+						</div>
+						<div class="row text-center align-items-center no-gutters justify-content-center">
+							<div class="col-auto mr-3">
+								<button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">ENTRAR</button>
+							</div>
+							<div class="col-auto">
+								<a routerLink="/login" class="btn-sm text-secondary">possuo conta</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

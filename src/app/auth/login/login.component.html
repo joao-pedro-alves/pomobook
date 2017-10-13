@@ -1,0 +1,43 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-7 col-lg-5 ml-auto mr-auto">
+			<div class="card mt-5">
+				<div class="card-body">
+					<h4 class="card-title mb-4">Acessar</h4>
+
+					<form-feedback
+						[message]="feedbackMessage"
+						(change)="feedbackMessageChange($event)"
+					></form-feedback>
+
+					<form [formGroup]="form" (submit)="submitLogin()">
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon bg-transparent text-primary">
+									<i class="fa fa-envelope"></i>
+								</span>							
+								<input formControlName="email" placeholder="Informe seu email" type="email" name="email" class="form-control" [ngClass]="{'is-invalid': form.get('email').invalid && form.get('email').touched}">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon bg-transparent text-primary">
+									<i class="fa fa-key"></i>
+								</span>							
+								<input formControlName="password" placeholder="Informe sua senha" type="password" name="password" class="form-control" [ngClass]="{'is-invalid': form.get('password').invalid && form.get('password').touched}">
+							</div>
+						</div>
+						<div class="row text-center align-items-center">
+							<div class="col-xs-12 col-md-6">
+								<button type="submit" class="btn btn-link">ENTRAR</button>
+							</div>
+							<div class="col-xs-12 col-md-6">
+								<a routerLink="/register" class="btn-sm text-secondary">não possuo conta</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
